@@ -1,6 +1,7 @@
 import {View, StyleSheet, Alert, Image, Text} from 'react-native';
 import {getCurrentPositionAsync, useForegroundPermissions, PermissionStatus} from 'expo-location';
 import{useState} from 'react';
+import {useNavigation} from '@react-navigation/native';
 
 
 import OutlinedButton from '../UI/OutlinedButton';
@@ -8,6 +9,8 @@ import {Colors} from '../../constants/colors';
 import {getMapPreview} from '../../util/location';
 
 function LoacationPicker(){
+
+    const Navigation = useNavigation();
 
     const [pickedLocation, setPickedLocation] = useState();
 
@@ -41,7 +44,7 @@ function LoacationPicker(){
        console.log(location);
     }
     function pickOnMapHandler(){
-
+        Navigation.navigate("Map");
     }
 
     let locationPreview = <Text>No location picked yet.</Text>;
